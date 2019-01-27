@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const uniqueValidator = require('mongoose-unique-validator');
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const uniqueValidator = require('mongoose-unique-validator')
 
 let rolesValidates = {
   values: ['USER_ROLE', 'ADMIN_ROLE'],
@@ -8,7 +8,6 @@ let rolesValidates = {
 }
 
 const userSchema = new Schema({
-
   name: {
     type: String,
     required: [true, 'name is necesary']
@@ -39,16 +38,15 @@ const userSchema = new Schema({
     type: Boolean,
     default: false
   }
+})
 
-});
+userSchema.methods.toJSON = function() {
+  let user = this
+  let userObbject = user.toObject()
+  delete userObbject.password
 
-userSchema.methods.toJSON = function () {
-  let user = this;
-  let userObbject = user.toObject();
-  delete userObbject.password;
-
-  return userObbject;
+  return userObbject
 }
 
-userSchema.plugin(uniqueValidator, '{PATH} should be unique');
-module.exports = mongoose.model('User', userSchema);
+userSchema.plugin(uniqueValidator, '{PATH} should be unique')
+module.exports = mongoose.model('User', userSchema)
