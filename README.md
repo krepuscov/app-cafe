@@ -1,3 +1,6 @@
 # App cafe
 
-## use: npm install
+## use
+
+- npm install
+- npm start
