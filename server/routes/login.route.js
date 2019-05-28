@@ -3,7 +3,9 @@ const User = require('../models/user.model')
 const bcrypt = require('bcrypt')
 const app = express()
 
-app.get('/login', (req, res) => {
+const { getToken } = require('../services/user.services')
+
+app.post('/login', (req, res) => {
   let body = req.body
 
   User.findOne({ email: body.email }, (err, userDB) => {
@@ -27,10 +29,11 @@ app.get('/login', (req, res) => {
         message: 'password incorrect'
       })
     }
-
+    const token = getToken(userDB)
     res.json({
       ok: true,
-      user: userDB
+      user: userDB,
+      token
     })
   })
 })
