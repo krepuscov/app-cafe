@@ -99,7 +99,7 @@ let deleteUser = (req, res) => {
     status: false
   }
 
-  User.findOneAndUpdate({ _id: id }, status, body, options)
+  User.findOneAndUpdate({ _id: id }, status, options)
     .then(userDB => {
       res.json({
         ok: true,
