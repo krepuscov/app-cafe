@@ -2,8 +2,10 @@
 // ---------PORT-----------
 // ========================
 
-<<<<<<< HEAD
-process.env.PORT = process.env.PORT || 3000;
-=======
 process.env.PORT = process.env.PORT || 3000
->>>>>>> CRUD app cafe
+
+// ========================
+// ---------DATABASE-----------
+// ========================
+
+process.env.URLDB = 'mongodb://localhost/cafeudemy'
