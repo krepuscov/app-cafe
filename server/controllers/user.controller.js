@@ -47,20 +47,6 @@ let postUser = (req, res) => {
     role: body.role
   })
 
-  // user.save((err, userDB) => {
-  //   if (err) {
-  //     return res.status(400).json({
-  //       ok: false,
-  //       err
-  //     })
-  //   }
-
-  //   res.json({
-  //     ok: true,
-  //     user: userDB
-  //   })
-  // })
-
   user
     .save()
     .then(userDB => {
@@ -87,22 +73,6 @@ let putUser = (req, res) => {
     runValidators: true
   }
 
-  // User.findByIdAndUpdate(id, body, options, (err, userDB) => {
-
-  //   if (err) {
-  //     return res.status(400).json({
-  //       ok: false,
-  //       err
-  //     });
-  //   }
-
-  //   res.json({
-  //     ok: true,
-  //     user: userDB
-  //   });
-
-  // });
-
   User.findOneAndUpdate({ _id: id }, body, options)
     .then(userDB => {
       res.json({
@@ -128,20 +98,6 @@ let deleteUser = (req, res) => {
   let status = {
     status: false
   }
-
-  // User.findByIdAndUpdate(id, status, options, (err, userDB) => {
-  //   if (err) {
-  //     return res.status(400).json({
-  //       ok: false,
-  //       err
-  //     });
-  //   }
-
-  //   res.json({
-  //     ok: true,
-  //     user: userDB
-  //   });
-  // })
 
   User.findOneAndUpdate({ _id: id }, status, body, options)
     .then(userDB => {
