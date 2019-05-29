@@ -1,10 +1,12 @@
+require('dotenv').config()
+
 const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const app = express()
 
 // settings
-require('./config/config')
+// require('./config/config')
 const database = require('./config/database')
 
 // middlewares
